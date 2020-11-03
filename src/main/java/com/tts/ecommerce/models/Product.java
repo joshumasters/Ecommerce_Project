@@ -7,13 +7,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
 
-    
     private String category;
 
     private String brand;
@@ -22,6 +22,9 @@ public class Product {
 
     private String description;
 
+    private int quantity;
+
+    private String image;
 
     public Product() {
     }

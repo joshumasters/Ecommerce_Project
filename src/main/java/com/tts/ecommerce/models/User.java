@@ -2,6 +2,7 @@ package com.tts.ecommerce.models;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -37,7 +38,7 @@ public class User implements UserDetails {
     private String password;
 
     @ElementCollection
-    private HashMap<Product, Integer> cart;
+    private Map<Product, Integer> cart;
 
     public Long getId() {
         return id;
@@ -63,11 +64,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public HashMap<Product, Integer> getCart() {
+    public Map<Product, Integer> getCart() {
         return cart;
     }
 
-    public void setCart(HashMap<Product, Integer> cart) {
+    public void setCart(Map<Product, Integer> cart) {
         this.cart = cart;
     }
 
@@ -86,34 +87,33 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
-        return null;
+    // TODO Auto-generated method stub
+    return null;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        // TODO Auto-generated method stub
-        return false;
+    // TODO Auto-generated method stub
+    return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        // TODO Auto-generated method stub
-        return false;
+    // TODO Auto-generated method stub
+    return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        // TODO Auto-generated method stub
-        return false;
+    // TODO Auto-generated method stub
+    return true;
     }
 
     @Override
     public boolean isEnabled() {
-        // TODO Auto-generated method stub
-        return false;
+    // TODO Auto-generated method stub
+    return true;
     }
-
 
     // public class UserDetailsService {
     //     // UserDetails requires these, they are technically getters (is-ers?) overridden by Lombok.
