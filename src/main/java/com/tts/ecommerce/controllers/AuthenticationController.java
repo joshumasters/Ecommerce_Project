@@ -37,8 +37,9 @@ import org.springframework.web.bind.annotation.RequestParam;
                   bindingResult.rejectValue("username", "error.user", "Username is already taken.");
                   return "signin";
               }
-          }
-          request.login(user.getUsername(), password);
+            }
+          System.out.println(user);
+        request.login(user.getUsername(), password);
           return "redirect:/";
       }
     }
