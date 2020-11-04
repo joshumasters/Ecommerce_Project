@@ -24,22 +24,21 @@ import org.springframework.web.bind.annotation.RequestParam;
           return "signin";
       }
  
-      @PostMapping("/signin")
-      public String singup(@Valid User user,
-                           @RequestParam String submit,
-                           BindingResult bindingResult,
-                           HttpServletRequest request) throws ServletException {
-          String password = user.getPassword();
-          if(submit.equals("up")) {
-              if(userService.findByUsername(user.getUsername()) == null) {
-                  userService.saveNew(user);
-              } else {
-                  bindingResult.rejectValue("username", "error.user", "Username is already taken.");
-                  return "signin";
-              }
+      
+    @PostMapping("/signin")
+    public String singup(@Valid User user, @RequestParam String submit, BindingResult bindingResult,
+            HttpServletRequest request) throws ServletException {
+        String password = user.getPassword();
+        if (submit.equals("up")) {
+            if (userService.findByUsername(user.getUsername()) == null) {
+                userService.saveNew(user);
+            } else {
+                bindingResult.rejectValue("username", "error.user", "Username is already taken.");
+                return "signin";
             }
-          System.out.println(user);
+        }
         request.login(user.getUsername(), password);
-          return "redirect:/";
-      }
+        System.out.println(user);
+        return "redirect:/";
+    }
     }
